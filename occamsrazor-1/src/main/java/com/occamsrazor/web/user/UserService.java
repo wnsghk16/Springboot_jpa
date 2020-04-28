@@ -10,4 +10,5 @@ public interface UserService {
 	public boolean update(User user);
 	public boolean delete(String userid);
 	public List<User> list();
+	public boolean idCheck(String userid);
 }

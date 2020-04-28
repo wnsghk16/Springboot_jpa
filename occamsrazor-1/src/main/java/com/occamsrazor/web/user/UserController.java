@@ -26,7 +26,8 @@ public class UserController {
 	public Messenger add(@RequestBody User user) {
 		int current = userService.count();
 		userService.add(user);
-		return (userService.count() == current+1)?Messenger.SUCCESS:Messenger.FAIL;
+		//return (userService.count() == current+1)?Messenger.SUCCESS:Messenger.FAIL;
+		return Messenger.SUCCESS;
 	}
 
 	@GetMapping("/list")
@@ -62,6 +63,11 @@ public class UserController {
 	@DeleteMapping("/delete/{userid}")
 	public Messenger remove(@PathVariable String userid) {
 		return (userService.delete(userid))?Messenger.SUCCESS:Messenger.FAIL;
+	}
+	
+	@GetMapping("/idcheck/{userid}")
+	public Messenger idCheck(@PathVariable String userid) {
+		return (userService.idCheck(userid))?Messenger.SUCCESS:Messenger.FAIL;
 	}
 	
 	
