@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style>
+html, body{width:100%; height:100%; overflow:hidden; min-height:100%;}
+.border_black{border:1px solid black;}
+.center{margin: 0 auto;}
+.width_full{width:100%; height:100%;}
+</style>
+</head>
+<body>
+<header>
+  
+  <h2 style="text-align:center"> 관리자 등록 </h2>
+</header>
+<div style="text-align:center">
+
+<table id="top">
+		<tr>
+			<td id="title"><img src="http://www.cdc.go.kr/cdc/img/main/h1_logo.png"></td>
+			<td id="searchbox" colspan="2">
+				 <label for="search"></label>
+				 <input id="search" type="text" class="searchInput" width="100%">
+				 <input id="search-button" type="button" value="검색">
+			</td>
+			<td>						
+			     <input id="join-button" type="button" value="가입">
+			     <input id="login-button" type="button" value="로그인">  
+			     <input id="register-button" type="button" value="등록">
+			     <input id="access-button" type="button" value="접속"> 
+			</td>
+		</tr>
+</table>
+<table id="main">
+	<tr>
+		<td id="profile" rowspan="4">프로필</td>
+		<td id="name_p">이름</td>
+		<td id="putName">
+   			<input id="name" type = "text"> <br>
+		</td>
+	</tr>
+	<tr>
+		<td id="position_p">직책</td>
+		<td id="putPosition">
+   			<input id="position" type = "text"> <br>
+		</td>
+	</tr>
+	<tr>
+		<td id="email_p">이메일</td>
+		<td id="putEmail">
+   			<input id="email" type = "text"> <br>
+		</td>
+	</tr>
+	<tr>
+		<td id="phonenumber_p">연락처</td>
+		<td id="putPhonenumber">
+   			<input id="phonenumber" type = "text"> <br>
+		</td>
+	</tr>
+</table>
+<table id="button_t">
+	<tr>
+		<td id="check">
+			<input id="check-button" type="button" value="등록">
+		</td>
+		<td id="cancle">			
+			<input id="cancle-button" type="button" value="취소"> 
+		</td>
+	</tr>
+</table>
+</div>
+<section>
+</section>
+	<script>
+	$('#main').css({width:'80%', height:'700px'}).addClass('border_black center')
+	$('#button_t').css({width:'80%', height:'100px'}).addClass('center')
+	$('#profile').css({width:'35%', height:'100%'}).addClass('border_black')	
+	$('#name_p').css({width:'10%'}).addClass('center')
+	$('#putName').css({width:'55%'})
+	$('#position_p').css({width:'10%'})
+	$('#putPosition').css({width:'55%'})
+	$('#email_p').css({width:'10%'})
+	$('#putEmail').css({width:'55%'})
+	$('#phonenumber_p').css({width:'10%'})
+	$('#putPhonenumber').css({width:'55%'})
+	$('#check').css({width:'50%', height:'100%'})
+	$('#cancle').css({width:'50%', height:'100%'})
+	$('#top').css({width:'80%', height:'100px'}).addClass('border_black center')
+	$('#title').css({width:'30%'}).addClass('center')
+	$('#searchbox').css({width:'45%'}).addClass('center')	
+	
+	</script>
+</body>
+</html>
