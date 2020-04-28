@@ -21,7 +21,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService{
 	private Map<String, Object> map; //키값으로 찾기때문에 count 필요 없음
-	public final static String FILE_PATH = "C:\\Users\\bit22\\spring-workspace\\occamsrazor\\src\\main\\resources\\static\\user\\";
 	
 	public UserServiceImpl() {
 		map = new HashMap<>();
