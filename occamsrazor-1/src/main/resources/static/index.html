@@ -1,78 +1,109 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<style>
-html, body{width:100%; height:100%; overflow:hidden; min-height:100%;}
-.border_black{border:1px solid black;}
-.center{margin: 0 auto;}
-.width_full{width:100%; height:100%;}
-</style>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
+<style>
+	 html,
+	    body {
+	        width: 100%;
+	        height: 100%;
+	        overflow: hidden;
+	        min-height: 100%;
+	    }
+	    .border_black {
+	        border: 1px solid black;
+	    }
+	    .center {
+	        margin: 0 auto;
+	        text-align: center;
+	    }
+	    .width_full {
+	        width: '100%';
+	        height: '100%'
+	    }
+</style>
+
 <body>
-<div style="text-align:center">
-	<table id="main">
-		<tr>
-			<td id="title"><img src="http://www.cdc.go.kr/cdc/img/main/h1_logo.png"></td>
-			<td id="searchbox" colspan="2">
-				 <label for="search"></label>
-				 <input id="search" type="text" class="searchInput" width="100%">
-				 <input id="search-button" type="button" value="검색">
-			</td>
-			<td>						
-			     <input id="join-button" type="button" value="가입">
-			     <input id="login-button" type="button" value="로그인">  
-			     <input id="register-button" type="button" value="등록">
-			     <input id="access-button" type="button" value="접속"> 
-			</td>
-		</tr>
-		<tr><td id="nav" colspan="4">
-			<table id="nav_list">
-				<tr id="nav">
-				<td>감염병</td>
-				<td>건강정보</td>
-				<td>정책정보</td>
-				<td>연구개발</td>
-				<td>알림.자료</td>
-				<td>간행물.통계</td>
-				<td>민원.정보공개</td>
-				<td>기관소개</td>
-				<td>사업별홈페이지</td>
-		</tr>
-			</table>
-		</td></tr>
-		
-		<tr><td id="picture" colspan="4"><img src="http://www.cdc.go.kr/cdc/img/main/visual_default_main_01.jpg" width="100%"></td></tr>
-		<tr id="picture2">
-			<td><img src="http://www.cdc.go.kr/cdc/img/main/visual_default_05.jpg"></td>
-			<td><img src="http://www.cdc.go.kr//cdc/img/main/visual_default_12.png"></td>
-			<td><img src="http://www.cdc.go.kr//cdc/img/main/visual_default_10.jpg"></td>
-			<td><img src="http://www.cdc.go.kr//cdc/img/main/visual_default_08.jpg"></td>
-		</tr>
-		<tr id="text">
+    <table id="kcdc">
+        <tr id="tr_1">
+            <td id="title">
+                <img src="http://www.cdc.go.kr/cdc/img/main/h1_logo.png">
+            </td>
+            <td colspan="2">
+            	<input id="search" style="width:500px;height:50px;float:left;margin-left:50px" type="text">
+                <input id="search_button" style="width:150px;height:50px;float:left;margin-left:50px;background-color: #80003e; color: white" type="button" value="검색"> <br>
+            
+            </td>
+            <td>
+                <a id="join_a" style="cursor:pointer;text-decoration: underline">회원가입</a>
+                <a id="login_a" style="cursor:pointer;text-decoration: underline">로그인</a>
+                <a id="register_a" style="cursor:pointer;text-decoration: underline">관리자 등록</a>
+                <a id="access_a" style="cursor:pointer;text-decoration: underline">관리자 접속</a>                
+            </td>
+        </tr>
+        <tr id="menu">
+            <td colspan="4">
+            	<table id="nav_list">
+					<tr id="nav">
+						<td>감염병</td>
+						<td>건강정보</td>
+						<td>정책정보</td>
+						<td>연구개발</td>
+						<td>알림.자료</td>
+						<td>간행물.통계</td>
+						<td>민원.정보공개</td>
+						<td>기관소개</td>
+						<td>사업별홈페이지</td>
+					</tr>
+				</table>
+            </td>
+        </tr>
+        <tr>
+            <td id="picture" colspan="4">
+                <img src="http://www.cdc.go.kr/cdc/img/main/visual_default_main_01.jpg" width="100%">
+            </td>
+        </tr>
+        <tr id="menu_2">
+            <td >
+                <img src="http://www.cdc.go.kr/cdc/img/main/visual_default_05.jpg">
+            </td>
+            <td>
+                <img src="http://www.cdc.go.kr/cdc/img/main/visual_default_12.png">
+            </td>
+            <td>
+                <img src="http://www.cdc.go.kr/cdc/img/main/visual_default_10.jpg">
+            </td>
+            <td>
+                <img src="http://www.cdc.go.kr/cdc/img/main/visual_default_08.jpg">
+            </td>
+        </tr>
+        <tr id="text">
 			<td>미세먼지</td>
 			<td>법정감염병 분류체계 개편</td>
 			<td>인플루엔자</td>
 			<td>액상형 전자담배 관련 폐손상</td>
 		</tr>
-	</table>
-</div>
-	<script>	
-	$('#main').css({width:'80%', height:'900px'}).addClass('border_black width_full center')
+    </table>
+<script>	
+	$('#kcdc').css({width:'80%', height:'900px'}).addClass('border_black center')
 	$('#title').css({width:'100%', height:'15%'}).addClass('center')
 	$('#nav_list').css({width:'100%', height:'10%'}).addClass('center')
 	$('#picture').css({width:'100%', height:'55%'}).addClass('center')
-	$('#picture2').css({width:'100%', height:'15%'})	
+	$('#menu_2').css({width:'100%', height:'15%'})	
 	$('#text').css({width:'100%', height:'10%'})
 	$('#text td').addClass('center')
-	$('#searchbox').css({width:'100%', height:'100%'}).addClass('center')	
 	
-	$('#register-button').click(e=>{
+	$('#register_a').click(e=>{
 		e.preventDefault()
 		location.href="admin/register.html"
 	})
-	</script>
+	$('#join_a').click(e=>{
+		e.preventDefault()
+		location.href="user/signup.html"
+	})
+</script>
 </body>
 </html>

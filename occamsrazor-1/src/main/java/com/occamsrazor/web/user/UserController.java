@@ -15,26 +15,38 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.occamsrazor.web.admin.Admin;
 import com.occamsrazor.web.util.Messenger;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController {
 	@Autowired UserService userService;
 	
-	@PostMapping("/join")
-	public Messenger add(@RequestBody User user) {
-		int current = userService.count();
-		userService.add(user);
-		//return (userService.count() == current+1)?Messenger.SUCCESS:Messenger.FAIL;
+	@PostMapping("")
+	public Messenger post(@RequestBody User user) {
+		userService.register(user);
 		return Messenger.SUCCESS;
 	}
-
-	@GetMapping("/list")
+	@GetMapping("")
 	public List<User> list(){
-		return userService.list();
+		return userService.findall();
 	}
-	
+	@GetMapping("/{userid}")
+	public User detail(@PathVariable String userid) {
+		return userService.findOne(userid);
+	}
+	@PutMapping("/{userid}")
+	public Messenger put(@RequestBody User user) {
+		userService.modify(user);
+		return Messenger.SUCCESS;
+	}
+	@DeleteMapping("/{userid}")
+	public Messenger delete(@RequestBody User user) {
+		userService.remove(user);
+		return Messenger.SUCCESS;
+	}
+		
 	@PostMapping("/login")
 	public Map<String,Object> login (@RequestBody User user) { //user타입인 loginUser이랑 Messenger타입인 SUCCESS를 보내야하므로 합쳐서 보내는건 map밖에 없다.
 		Map<String,Object> returnMap = new HashMap<>();
@@ -49,22 +61,7 @@ public class UserController {
 		
 		return returnMap;
 	}
-	
-	@GetMapping("/detail/{userid}")
-	public User detail(@PathVariable String userid) {
-		return userService.detail(userid);
-	}
-	
-	@PutMapping("/update")
-	public Messenger update(@RequestBody User user) {
-		return(userService.update(user))?Messenger.SUCCESS:Messenger.FAIL;
-	}
-	
-	@DeleteMapping("/delete/{userid}")
-	public Messenger remove(@PathVariable String userid) {
-		return (userService.delete(userid))?Messenger.SUCCESS:Messenger.FAIL;
-	}
-	
+		
 	@GetMapping("/idcheck/{userid}")
 	public Messenger idCheck(@PathVariable String userid) {
 		return (userService.idCheck(userid))?Messenger.SUCCESS:Messenger.FAIL;

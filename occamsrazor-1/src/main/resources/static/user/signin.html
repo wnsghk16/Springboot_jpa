@@ -105,7 +105,7 @@ footer {
 	$('#login-button').click(e=>{
 		e.preventDefault()
 		$.ajax({
-			url:'/user/login',
+			url:'/users/login',
 			type:'post',
 			data:JSON.stringify({
 				userid:$('#userid').val(),
