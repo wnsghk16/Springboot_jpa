@@ -24,7 +24,7 @@ public class AdminServiceImpl implements AdminService{
 	
 	@Override
 	public void register(Admin admin) {		
-		admin.setEmployNumber(createEmployNumber()); // 4자리 랜덤
+		admin.setEmployNumber(createEmployNumber()); // 4자리 랜덤 d
 		admin.setPasswd("1"); //비밀번호 다 외워야하니까 일단 1로 준다. 사번만드는거랑 거의 같음
 		admin.setRegisterDate(createCurrentDate()); // 자바에서 현재 날짜 
 		adminDao.insert(admin);		
