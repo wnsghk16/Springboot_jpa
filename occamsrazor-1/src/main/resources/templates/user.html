@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>사용자 페이지</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="/resources/css/global.css">
+	<script type="text/javascript" src="/resources/js/user.js"></script>
+</head>
+<body>
+    <table id="kcdc">
+        <tr id="tr_1">
+            <td id="title">
+                <img src="http://www.cdc.go.kr/cdc/img/main/h1_logo.png">
+            </td>
+            <td colspan="2">
+            	<input id="search" style="width:500px;height:50px;float:left;margin-left:50px" type="text">
+                <input id="search_button" style="width:150px;height:50px;float:left;margin-left:50px;background-color: #80003e; color: white" type="button" value="검색"> <br>
+            
+            </td>
+            <td>
+                <a id="join_a" style="cursor:pointer;text-decoration: underline">회원가입</a>
+                <a id="login_a" style="cursor:pointer;text-decoration: underline">로그인</a>
+                <a id="register_a" style="cursor:pointer;text-decoration: underline">관리자 등록</a>
+                <a id="access_a" style="cursor:pointer;text-decoration: underline">관리자 접속</a>                
+            </td>
+        </tr>
+        <tr id="menu">
+            <td colspan="4">
+            	<table id="nav_list">
+					<tr id="nav">
+						<td>감염병</td>
+						<td>건강정보</td>
+						<td>정책정보</td>
+						<td>연구개발</td>
+						<td>알림.자료</td>
+						<td>간행물.통계</td>
+						<td>민원.정보공개</td>
+						<td>기관소개</td>
+						<td>사업별홈페이지</td>
+					</tr>
+				</table>
+            </td>
+        </tr>
+        <tr>
+            <td id="picture" colspan="4">
+                <img src="http://www.cdc.go.kr/cdc/img/main/visual_default_main_01.jpg" width="100%">
+            </td>
+        </tr>
+        <tr id="menu_2">
+            <td >
+                <img src="http://www.cdc.go.kr/cdc/img/main/visual_default_05.jpg">
+            </td>
+            <td>
+                <img src="http://www.cdc.go.kr/cdc/img/main/visual_default_12.png">
+            </td>
+            <td>
+                <img src="http://www.cdc.go.kr/cdc/img/main/visual_default_10.jpg">
+            </td>
+            <td>
+                <img src="http://www.cdc.go.kr/cdc/img/main/visual_default_08.jpg">
+            </td>
+        </tr>
+        <tr id="text">
+			<td>미세먼지</td>
+			<td>법정감염병 분류체계 개편</td>
+			<td>인플루엔자</td>
+			<td>액상형 전자담배 관련 폐손상</td>
+		</tr>
+    </table>
+<script>	
+	user.init()
+</script>
+</body>
+</html>

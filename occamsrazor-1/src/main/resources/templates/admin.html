@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>관리자 페이지</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="/resources/css/global.css">
+	<script type="text/javascript" src="/resources/js/admin.js"></script>
+</head>
+<body>
+	<table id="kcdc">
+        <tr id="tr_1">
+            <td id="title">
+                <img src="http://www.cdc.go.kr/cdc/img/main/h1_logo.png">
+            </td>
+            <td id="title2" colspan="2">
+            	<h1 >관리자 등록</h1>
+            </td>
+            <td id="title3">
+                <a id="join_a" style="cursor:pointer;text-decoration: underline">회원가입</a>
+                <a id="login_a" style="cursor:pointer;text-decoration: underline">로그인</a>
+                <a id="register_a" style="cursor:pointer;text-decoration: underline">관리자 등록</a>
+                <a id="access_a" style="cursor:pointer;text-decoration: underline">관리자 접속</a>
+            </td>
+        </tr>
+        <tr id="menu">
+            <td colspan="4">
+            	<table id="nav_list">
+					<tr id="nav">
+						<td>감염병</td>
+						<td>건강정보</td>
+						<td>정책정보</td>
+						<td>연구개발</td>
+						<td>알림.자료</td>
+						<td>간행물.통계</td>
+						<td>민원.정보공개</td>
+						<td>기관소개</td>
+						<td>사업별홈페이지</td>
+					</tr>
+				</table>
+            </td>
+        </tr>
+        <tr>
+            <td id="content" colspan="4">
+                <table id="admin" style="width: 80%; height:80%; margin: 0 auto">
+                <tr style="width: 80%;height: 50px;">
+                  <td rowspan="4">
+                    <img src="https://u5b8t9w6.stackpathcdn.com/wp-content/uploads/2014/12/profile-default-300x242.jpg">
+                  </td>
+                  <td style="height: 20%">
+                    <label>이름</label>
+                  </td>
+                  <td>
+                    <input id="name" type="text" />
+                  </td>
+                </tr>  
+                <tr style="height: 20%">
+                  <td >
+                    <label>직급</label>
+                  </td>
+                  <td>
+                    <input id="position" type="text" />
+                  </td>
+                </tr>
+                <tr style="height: 20%">
+                  <td>
+                    <label>이메일</label>
+                  </td>
+                  <td>
+                    <input id="email" type="text" />
+                  </td>
+                </tr>
+                <tr style="height: 20%">
+                  <td>
+                    <label>전화번호</label>
+                  </td>
+                  <td>
+                    <input id="phoneNumber" type="text" />
+                  </td>
+                </tr>
+                <tr style="height: 20%">
+                  <td colspan="3">
+                    <input id="admin_register" type="button" value="등록하기" style="width: 200px; height: 50px;font-size: 20px;"/>
+                    <input id="admin_cancle" type="button" value="취소하기" style="width: 200px; height: 50px;margin-left: 50px;font-size: 20px;"/>
+                  </td>
+                </tr>
+              </table>
+            </td>
+        </tr>
+    </table>
+<script>
+	admin.init()
+</script>
+</body>
+</html>
