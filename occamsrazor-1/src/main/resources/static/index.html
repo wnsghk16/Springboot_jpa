@@ -96,13 +96,26 @@
 	$('#text').css({width:'100%', height:'10%'})
 	$('#text td').addClass('center')
 	
+	$('#join_a').click(e=>{
+		e.preventDefault()
+		location.href="user/signup.html"
+	})
+	$('#login_a').click(e=>{
+		e.preventDefault()
+		location.href="user/signin.html"
+	})
+	
 	$('#register_a').click(e=>{
 		e.preventDefault()
 		location.href="admin/register.html"
 	})
-	$('#join_a').click(e=>{
+	$('#access_a').click(e=>{
 		e.preventDefault()
-		location.href="user/signup.html"
+		$.ajax({
+			
+		})		
+		
+		location.href="admin/access.html"
 	})
 </script>
 </body>
