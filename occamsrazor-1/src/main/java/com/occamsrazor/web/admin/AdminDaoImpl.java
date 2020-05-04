@@ -22,7 +22,7 @@ public class AdminDaoImpl implements AdminDao{
 			@SuppressWarnings("resource")
 			BufferedWriter writer = new BufferedWriter(
 									 new FileWriter(
-									  new File(Data.ADMIN_PATH.toString()+Data.LIST+Data.CSV),true));
+									  new File(Data.ADMIN_PATH.toString()+Data.ADMIN_LIST+Data.CSV),true));
 			
 			writer.write(admin.toString());
 			writer.newLine();
@@ -38,7 +38,7 @@ public class AdminDaoImpl implements AdminDao{
 		List<Admin> adminlist = new ArrayList<>();	
 		List<String> list = new ArrayList<>();
 		try {
-			File file = new File(Data.ADMIN_PATH.toString()+Data.LIST+Data.CSV);
+			File file = new File(Data.ADMIN_PATH.toString()+Data.ADMIN_LIST+Data.CSV);
 			BufferedReader reader = new BufferedReader(new FileReader(file));	
 			String message = "";
 			while((message = reader.readLine()) != null) {
@@ -78,6 +78,14 @@ public class AdminDaoImpl implements AdminDao{
 	public void delete(Admin admin) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public boolean access(Admin admin) {
+		List<Admin> adminlist = selectAll();
+		for(int i=0; i<adminlist.size(); i++) {
+		}
+		return true;
 	}
 
 }

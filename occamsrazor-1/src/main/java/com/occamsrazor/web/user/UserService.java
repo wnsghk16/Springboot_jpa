@@ -8,7 +8,6 @@ public interface UserService {
 	public User findOne(String userid);
 	public void modify(User user);
 	public void remove(User user);
-	public User login(User user);
 	public boolean idCheck(String userid);
 	
 }

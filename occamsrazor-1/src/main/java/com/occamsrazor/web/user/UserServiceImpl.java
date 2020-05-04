@@ -56,12 +56,6 @@ public class UserServiceImpl implements UserService{
 	public void remove(User user) {
 		userDao.delete(user);
 	}
-
-	@Override
-	public User login(User user) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	@Override
 	public boolean idCheck(String userid) {	

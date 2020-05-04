@@ -20,7 +20,6 @@ import com.occamsrazor.web.util.Messenger;
 @RequestMapping("/admins")
 public class AdminController {
 	@Autowired AdminService adminService;
-	@Autowired Admin admin;
 	
 	@PostMapping("")
 	public Messenger post(@RequestBody Admin admin) {
@@ -46,4 +45,8 @@ public class AdminController {
 		return Messenger.SUCCESS;
 	}
 	
+	@PostMapping("/login")
+	public Messenger login (@RequestBody Admin admin) { 
+		return adminService.login(admin)?Messenger.SUCCESS:Messenger.FAIL;
+	}
 }

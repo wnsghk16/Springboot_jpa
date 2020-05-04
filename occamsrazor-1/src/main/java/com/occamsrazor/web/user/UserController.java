@@ -47,21 +47,6 @@ public class UserController {
 		return Messenger.SUCCESS;
 	}
 		
-	@PostMapping("/login")
-	public Map<String,Object> login (@RequestBody User user) { //user타입인 loginUser이랑 Messenger타입인 SUCCESS를 보내야하므로 합쳐서 보내는건 map밖에 없다.
-		Map<String,Object> returnMap = new HashMap<>();
-		User loginUser = userService.login(user);
-		
-		if(loginUser != null) {
-			returnMap.put("user", loginUser);
-			returnMap.put("messenger", Messenger.SUCCESS);
-		}else {
-			returnMap.put("messenger", Messenger.FAIL);
-		}
-		
-		return returnMap;
-	}
-		
 	@GetMapping("/idcheck/{userid}")
 	public Messenger idCheck(@PathVariable String userid) {
 		return (userService.idCheck(userid))?Messenger.SUCCESS:Messenger.FAIL;

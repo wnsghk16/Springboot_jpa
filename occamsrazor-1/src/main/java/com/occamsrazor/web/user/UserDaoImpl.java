@@ -22,7 +22,7 @@ public class UserDaoImpl implements UserDao{
 			@SuppressWarnings("resource")
 			BufferedWriter writer = new BufferedWriter(
 									 new FileWriter(
-										new File(Data.USER_PATH.toString()+Data.LIST+Data.CSV),true));
+										new File(Data.USER_PATH.toString()+Data.USER_LIST+Data.CSV),true));
 			writer.write(user.toString());
 			writer.newLine();
 			writer.flush(); //카톡에서 엔터는 줄바꿈이고 보내기버튼 누르면 메세지 전송하듯 보내기버튼같은거	
@@ -37,7 +37,7 @@ public class UserDaoImpl implements UserDao{
 		List<User> userlist = new ArrayList<>();	
 		List<String> list = new ArrayList<>();
 		try {
-			File file = new File(Data.USER_PATH.toString()+Data.LIST+Data.CSV);
+			File file = new File(Data.USER_PATH.toString()+Data.USER_LIST+Data.CSV);
 			BufferedReader reader = new BufferedReader(new FileReader(file));	
 			String message = "";
 			while((message = reader.readLine()) != null) {
@@ -56,8 +56,10 @@ public class UserDaoImpl implements UserDao{
 			u.setName(arr[2]);
 			u.setSsn(arr[3]);
 			u.setAddr(arr[4]);
-			u.setEmail(arr[5]);
-			u.setPhoneNumber(arr[6]);
+			u.setAddr(arr[5]);
+			u.setEmail(arr[6]);
+			u.setPhoneNumber(arr[7]);
+			u.setRegisterDate(arr[8]);
 			userlist.add(u);
 		}			
 		return userlist;

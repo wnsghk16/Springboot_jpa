@@ -62,4 +62,9 @@ public class AdminServiceImpl implements AdminService{
 		adminDao.delete(admin);
 	}
 
+	@Override
+	public boolean login(Admin admin) {
+		return adminDao.access(admin);
+	}
+
 }
