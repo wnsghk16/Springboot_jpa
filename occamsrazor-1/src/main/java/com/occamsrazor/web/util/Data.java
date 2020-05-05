@@ -3,22 +3,22 @@ package com.occamsrazor.web.util;
 import java.io.File;
 
 public enum Data {
-	USER_PATH, ADMIN_PATH, CSV, USER_LIST,ADMIN_LIST;
+	HOME_PATH, PATH, CSV, USER_LIST,ADMIN_LIST;
 	
 	@Override
 	public String toString() {
 		String returnValue = "";
 		switch(this) {
-		case USER_PATH: returnValue = "C:"+File.separator+"Users"+File.separator+"bit22"+File.separator+"git"
+		case PATH: returnValue = "C:"+File.separator+"Users"+File.separator+"bit22"+File.separator+"git"
 										+File.separator+"repository2"+File.separator+"occamsrazor-1"+File.separator+"src"
 										+File.separator+"main"+File.separator+"resources"+File.separator+"static"
 										+File.separator+"resources"+File.separator+"file"+File.separator;
 			break;
-		case ADMIN_PATH: returnValue = "C:"+File.separator+"Users"+File.separator+"bit22"+File.separator+"git"
-				+File.separator+"repository2"+File.separator+"occamsrazor-1"+File.separator+"src"
+		case HOME_PATH: returnValue = "C:"+File.separator+"Users"+File.separator+"준화"+File.separator+"git"+File.separator+"Springboot_jpa"
+				+File.separator+"occamsrazor-1"+File.separator+"src"
 				+File.separator+"main"+File.separator+"resources"+File.separator+"static"
 				+File.separator+"resources"+File.separator+"file"+File.separator;
-			break;	
+		break;	
 		case CSV : returnValue = ".csv";
 			break;
 		case USER_LIST : returnValue = "user_list";

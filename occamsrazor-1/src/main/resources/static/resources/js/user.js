@@ -41,24 +41,21 @@ user = (()=>{
 								.appendTo('#login_box')
 								.click(e=>{
 									e.preventDefault()
-									//location.href="/admin"
 									
 									$.ajax({
-										url:'/admins',
-										type : 'post',
-										dat : JSON.stringify({
+										url:'/admins/login',
+										type:'post',
+										data:JSON.stringify({
 											employNumber:$('#employNumber').val(),
 											passwd:$('#passwd').val()
 										}),
-										dataType : 'json/login',
-										contentType : 'application/json',
+										dataType:'json',
+							        	contentType:'application/json',
 										success : d=>{
-											if(d.messenger === 'SUCCESS'){
-												sessionStorage.setItem('employNumber',d.admin.employNumber)
-												location.href="/admin"					
+											if(d === 'SUCCESS'){
+												location.href="/admin"	
 											}else{
-												alert('잘못입력했습니다.')
-												location.href="/user"
+												alert('잘못입력했습니다.')	
 											}
 										},
 										error : (r,x,e)=>{
@@ -72,6 +69,7 @@ user = (()=>{
 								.appendTo('#login_box')
 							    .click(e=>{
 							    	e.preventDefault()
+							    	alert('취소')
 							    })
 			        	 },
 			        	 error: (r,x,e)=>{
@@ -96,32 +94,29 @@ user = (()=>{
 				.attr({value:"로그인"})
 				.appendTo('#login_box')
 				.click(e=>{
-					e.preventDefault()										
-					location.href="/admin"
-					/*
+					e.preventDefault()
+					
 					$.ajax({
 						url:'/admins/login',
-						type : 'post',
-						dat : JSON.stringify({
-							userid:$('#userid').val(),
+						type:'post',
+						data:JSON.stringify({
+							employNumber:$('#employNumber').val(),
 							passwd:$('#passwd').val()
-						}),
-						dataType : 'json',
-						contentType : 'application/json',
-						success : d=>{
-							if(d.messenger === 'SUCCESS'){
-								sessionStorage.setItem('userid',d.user.userid)
-								location.href="/admin"					
-							}else{
-								alert('잘못입력했습니다.')
-								location.href="/user"
+							}),
+							dataType:'json',
+							contentType:'application/json',
+							success : d=>{
+								if(d === 'SUCCESS'){									
+									location.href="/admin"
+								}else{
+									alert('잘못입력했습니다.')
+								}
+							},
+							error : (r,x,e)=>{
+								alert(r.status)
 							}
-						},
-						error : (r,x,e)=>{
-							alert(r.status)
-						}
 					})
-					*/
+					
 				})
 			    $(`<input type="button"/>`)
 				.attr({value:"취소"})
@@ -129,8 +124,7 @@ user = (()=>{
 			    .click(e=>{
 			    	e.preventDefault()
 			    })
-			     
-				//location.href="/admin"			
+			     		
 			})
 			$('#join_a').click(e=>{
 				e.preventDefault()
