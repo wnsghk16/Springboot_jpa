@@ -3,10 +3,7 @@
 const adminVue = {
 		join : ()=>{
 			return `
-		<table id="kcdc">
-			<tr >
-	            <td id="content" colspan="4">
-	                <table id="admin" style="width: 1500px; height:565px; margin: 0 auto">
+				<table id="admin" style="width: 1500px; height:565px; margin: 0 auto">
 	                <tr style="width: 80%;height: 50px;">
 	                  <td rowspan="4" style="border: 1px solid black;">
 	                    <img src="https://u5b8t9w6.stackpathcdn.com/wp-content/uploads/2014/12/profile-default-300x242.jpg">
@@ -47,9 +44,6 @@ const adminVue = {
 	                  </td>
 	                </tr>
 	              </table>
-	            </td>
-	        </tr>
-	   </table>
           `
 		},
 		login : ()=>{

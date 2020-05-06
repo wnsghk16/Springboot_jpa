@@ -3,7 +3,6 @@
 const userVue = {
 		detail : ()=>{
 			return `
-			<table id="admin_info" style="width: 1000px; height: 300px; margin: 0 auto">
 				<tr>
 					<td id="title" colspan="3" style="border: 1px solid black;">사용자 정보</td>
 				</tr>
@@ -59,7 +58,6 @@ const userVue = {
 						<p id="registerDate"></p>
 					</td>
 				</tr>
-			</table>
 			`
 		},
 		

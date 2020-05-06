@@ -39,7 +39,7 @@ admin = (()=>{ // e=>로 쓰면 이벤트가 발생할때만 실행되므로 쓰
 		                                <span>${user.registerDate}</span>
 		                            </td>
 									 
-		                        </tr>`).appendTo('#user_list')   
+		                        </tr>`).appendTo('#user_list')
 		                        
 		                        $(`<a>${user.name}</a>`)
 		                         .css({cursor:'pointer',color:'blue'})
@@ -67,29 +67,47 @@ admin = (()=>{ // e=>로 쓰면 이벤트가 발생할때만 실행되므로 쓰
 						e.preventDefault()
 						$('#user_list').empty()						
 						$.getJSON('/losts', d => {
-						$(userVue.list()).appendTo('#user_list').css({'background-color':'yellow'})
-						$.each(d, (i, lost) => {								
-								$(`<tr>
-								      <td>
-								        <span>${i+1}</span>
-								       </td>
-								       <td>
-								         <span>${lost.lostId}</span>
-								       </td>
-								       <td>
-								          <span>${lost.name}</span>
-								        </td>
-								        <td>
-								            <span>${lost.lostDate}</span>
-								         </td>
-								         <td>
-								            <span>${lost.group}</span>
-								         </td>
-								         <td>
-								            <span>${lost.location}</span>
-								         </td>															 
-								     </tr>`).appendTo('#user_list')   
-							})
+							$(userVue.list()).appendTo('#user_list').css({'background-color':'yellow'})
+							$.each(d, (i, lost) => {								
+									$(`<tr>
+									      <td>
+									        <span>${i+1}</span>
+									       </td>
+									       <td>
+									         <span>${lost.lostId}</span>
+									       </td>
+									       <td>
+									          <span>${lost.name}</span>
+									        </td>
+									        <td>
+									            <span>${lost.lostDate}</span>
+									         </td>
+									         <td>
+									            <span>${lost.group}</span>
+									         </td>
+									         <td>
+									            <span>${lost.location}</span>
+									         </td>															 
+									     </tr>`).appendTo('#user_list').addClass('border_black')
+									     
+									     $(`<a>${user.name}</a>`)
+				                         .css({cursor:'pointer',color:'blue'})
+										 .appendTo("#user_"+(i+1))
+										 .click(e=>{
+											 e.preventDefault()
+								        	 $('#user_list').empty()
+								        	 $(userVue.detail()).appendTo('#user_list')
+								        	 $.getJSON(`/losts/${lost.lostId}`,d=>{
+								        		 $('#lostId').text(d.userid)
+								        		 $('#name').text(d.name)
+								        		 $('#ssn').text(d.ssn)
+								        		 $('#addr').text(d.addr)
+								        		 $('#email').text(d.email)
+								        		 $('#phoneNumber').text(d.phoneNumber)
+								        		 $('#registerDate').text(d.registerDate)
+								        	 })						        	
+										 })
+								})
 								                        
 						})
 				})
@@ -101,7 +119,7 @@ admin = (()=>{ // e=>로 쓰면 이벤트가 발생할때만 실행되므로 쓰
 	let setContentView = ()=>{ 
 	     $('#user_list').addClass('border_black center')	     
 	     $('#user_list tr').first().css({'background-color':'yellow'})
-		 
+	     $('#user_list tr td').addClass('border_black')
 		
 	}
 	return {init}
