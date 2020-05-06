@@ -10,11 +10,11 @@ import org.springframework.stereotype.Service;
 import com.occamsrazor.web.util.Messenger;
 
 @Service
-public class LostServiceImpl implements LostService{
-	@Autowired LostDao lostDao;
+public class ItemServiceImpl implements ItemService{
+	@Autowired ItemDao lostDao;
 
 	@Override
-	public void register(Lost lost) {
+	public void register(Item lost) {
 		lost.setLostId(createLostId());
 		lost.setLostDate(createCurrentDate());
 		lostDao.insert(lost);
@@ -33,22 +33,22 @@ public class LostServiceImpl implements LostService{
 	}
 
 	@Override
-	public List<Lost> findAll() {
+	public List<Item> findAll() {
 		return lostDao.selectAll();
 	}
 
 	@Override
-	public Lost findOne(String lostId) {
+	public Item findOne(String lostId) {
 		return lostDao.selectOne(lostId);
 	}
 
 	@Override
-	public Messenger modify(Lost lost) {
+	public Messenger modify(Item lost) {
 		return lostDao.update(lost);
 	}
 
 	@Override
-	public Messenger remove(Lost lost) {
+	public Messenger remove(Item lost) {
 		return lostDao.delete(lost);
 	}
 

@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Component
 @Getter @Setter
-public class Lost {
+public class Item {
 	String lostId,name,lostDate,group,location;
 	
 	 @Override

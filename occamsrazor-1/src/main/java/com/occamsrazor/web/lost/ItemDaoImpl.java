@@ -16,15 +16,15 @@ import com.occamsrazor.web.util.Data;
 import com.occamsrazor.web.util.Messenger;
 
 @Repository
-public class LostDaoImpl implements LostDao{
+public class ItemDaoImpl implements ItemDao{
 
 	@Override
-	public void insert(Lost lost) {
+	public void insert(Item lost) {
 		try {
 			@SuppressWarnings("resource")
 			BufferedWriter writer = new BufferedWriter(
 									 new FileWriter(
-									  new File(Data.PATH.toString()+Data.LOST_LIST+Data.CSV),true));
+									  new File(Data.PATH.toString()+Data.LOSE_LIST+Data.CSV),true));
 			
 			writer.write(lost.toString());
 			writer.newLine();
@@ -35,12 +35,13 @@ public class LostDaoImpl implements LostDao{
 	}
 
 	@Override
-	public List<Lost> selectAll() {
-		List<Lost> lostlist = new ArrayList<>();	
+	public List<Item> selectAll() {
+		List<Item> items = new ArrayList<>();	
 		List<String> list = new ArrayList<>();
 		try {
-			File file = new File(Data.PATH.toString()+Data.LOST_LIST+Data.CSV);
-			BufferedReader reader = new BufferedReader(new FileReader(file));	
+			BufferedReader reader = new BufferedReader(
+										new FileReader(
+												new File(Data.PATH.toString()+Data.LOSE_LIST+Data.CSV)));	
 			String message = "";
 			while((message = reader.readLine()) != null) {
 				list.add(message);
@@ -50,25 +51,25 @@ public class LostDaoImpl implements LostDao{
 			System.out.println(Messenger.FILE_SELECT_ERROR);
 		}
 		
-		Lost l = null;
-		for(int i=0; i<list.size(); i++) {
-			l = new Lost();
-			String[] arr = list.get(i).split(",");
-			l.setLostId(arr[0]);
-			l.setName(arr[1]);
-			l.setLostDate(arr[2]);
-			l.setGroup(arr[3]);
-			l.setLocation(arr[4]);
-			lostlist.add(l);
-		}			
-		return lostlist;
+		Item i = null;
+		for(String s : list) {
+			i = new Item();
+			String[] arr = s.split(",");
+			i.setLostId(arr[0]);
+			i.setName(arr[1]);
+			i.setLostDate(arr[2]);
+			i.setGroup(arr[3]);
+			i.setLocation(arr[4]);
+			items.add(i);
+		}		
+		return items;
 	}
 
 	@Override
-	public Lost selectOne(String lostId) {
-		List<Lost> list = selectAll();
-		Lost result = null;
-		for(Lost l : list) {
+	public Item selectOne(String lostId) {
+		List<Item> list = selectAll();
+		Item result = null;
+		for(Item l : list) {
 			if(lostId.equals(l.getLostId())) {
 				result = l;
 				break;
@@ -78,13 +79,13 @@ public class LostDaoImpl implements LostDao{
 	}
 
 	@Override
-	public Messenger update(Lost lost) {
+	public Messenger update(Item lost) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Messenger delete(Lost lost) {
+	public Messenger delete(Item lost) {
 		// TODO Auto-generated method stub
 		return null;
 	}

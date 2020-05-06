@@ -3,61 +3,41 @@
 const adminVue = {
 		join : ()=>{
 			return `
-<<<<<<< HEAD
-				<table id="admin" style="width: 1500px; height:565px; margin: 0 auto">
-=======
-			<tr>
-	            <td id="content" colspan="4">
-	                <table id="admin" style="width: 1500px; height:565px; margin: 0 auto">
->>>>>>> branch '3_di' of https://github.com/wnsghk16/Springboot_jpa.git
-	                <tr style="width: 80%;height: 50px;">
-	                  <td rowspan="4" style="border: 1px solid black;">
-	                    <img src="https://u5b8t9w6.stackpathcdn.com/wp-content/uploads/2014/12/profile-default-300x242.jpg">
-	                  </td>
-<<<<<<< HEAD
-	                  <td>
-=======
-	                  <td style="border: 1px solid black;">
->>>>>>> branch '3_di' of https://github.com/wnsghk16/Springboot_jpa.git
-	                    <label>이름</label>
-	                  </td>
-	                  <td style="border: 1px solid black;">
-	                    <input id="name" type="text" />
-	                  </td>
-	                </tr>  
-	                <tr>
-<<<<<<< HEAD
-	                  <td>
-=======
-	                  <td style="border: 1px solid black;" >
->>>>>>> branch '3_di' of https://github.com/wnsghk16/Springboot_jpa.git
-	                    <label>직급</label>
-	                  </td>
-	                  <td style="border: 1px solid black;">
-	                    <input id="position" type="text" />
-	                  </td>
-	                </tr>
-	                <tr>
-	                  <td style="border: 1px solid black;">
-	                    <label>이메일</label>
-	                  </td>
-	                  <td style="border: 1px solid black;">
-	                    <input id="email" type="text" />
-	                  </td>
-	                </tr>
-	                <tr>
-	                  <td style="border: 1px solid black;">
-	                    <label>전화번호</label>
-	                  </td>
-	                  <td style="border: 1px solid black;">
-	                    <input id="phoneNumber" type="text" />
-	                  </td>
-	                </tr>
-	                <tr>
-	                  <td colspan="3" id="button_box" style="border: 1px solid black;">
-	                  </td>
-	                </tr>
-	              </table>
+			<tr style="width: 80%;height: 50px;">
+				<td rowspan="4" style="border: 1px solid black;">
+					<img src="https://u5b8t9w6.stackpathcdn.com/wp-content/uploads/2014/12/profile-default-300x242.jpg">
+	            </td>
+	            <td>
+	                <label>이름</label>
+	            </td>
+	            <td>
+	                <input id="name" type="text" />
+	            </td>
+	        </tr>  
+	        <tr>
+	            <td>
+	               <label>직급</label>
+	            </td>
+	            <td>
+	               <input id="position" type="text" />
+	            </td>
+	        </tr>
+	        <tr>
+	            <td>
+	               <label>이메일</label>
+	            </td>
+	        	<td>
+	                <input id="email" type="text" />
+	            </td>
+	        </tr>
+	        <tr>
+	           <td>
+	               <label>전화번호</label>
+	           </td>
+	           <td>
+	               <input id="phoneNumber" type="text" />
+	           </td>
+	        </tr>
           `
 		},
 		login : ()=>{
@@ -85,8 +65,5 @@ const adminVue = {
             	</tr>           		
             </table>   
 			`
-		},
-		mypage : ()=>{
-			return ``
 		}
 }

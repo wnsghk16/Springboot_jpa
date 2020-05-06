@@ -3,11 +3,7 @@ package com.occamsrazor.web.util;
 import java.io.File;
 
 public enum Data {
-<<<<<<< HEAD
-	HOME_PATH, PATH, CSV, USER_LIST,ADMIN_LIST, LOST_LIST;
-=======
-	HOME_PATH, PATH, CSV, USER_LIST,ADMIN_LIST;
->>>>>>> branch '3_di' of https://github.com/wnsghk16/Springboot_jpa.git
+	HOME_PATH, PATH, CSV, USER_LIST,ADMIN_LIST, LOSE_LIST;
 	
 	@Override
 	public String toString() {
@@ -29,7 +25,7 @@ public enum Data {
 		break;
 		case ADMIN_LIST : returnValue = "admin_list";
 		break;
-		case LOST_LIST : returnValue = "lost_list";
+		case LOSE_LIST : returnValue = "lose_list";
 		break;
 		default:
 			break;

@@ -148,7 +148,7 @@ user = (()=>{
 		$('#menu_2').css({width:'100%', height:'15%'})	
 		$('#text').css({width:'100%', height:'10%'})
 		$('#text td').addClass('center')
-		
+		$('#user_list').addClass('border_black center')
 	}
 	return {init}
 })()

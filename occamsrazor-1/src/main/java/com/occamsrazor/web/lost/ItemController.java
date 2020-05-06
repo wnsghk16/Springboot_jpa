@@ -16,29 +16,29 @@ import com.occamsrazor.web.util.Messenger;
 
 @RestController
 @RequestMapping("/losts")
-public class LostController {
-	@Autowired LostService lostService;
+public class ItemController {
+	@Autowired ItemService lostService;
 	
 	@PostMapping("")
-	public Messenger post(@RequestBody Lost lost) {
+	public Messenger post(@RequestBody Item lost) {
 		lostService.register(lost);
 		return Messenger.SUCCESS;
 	}
 	
 	@GetMapping("")
-	public List<Lost> list(){
+	public List<Item> list(){
 		return lostService.findAll();		
 	}
 	@GetMapping("/{lostId}")
-	public Lost detail(@PathVariable String lostId) {
+	public Item detail(@PathVariable String lostId) {
 		return lostService.findOne(lostId);
 	}
 	@PutMapping("/{lostId}")
-	public Messenger put(@RequestBody Lost lost) {
+	public Messenger put(@RequestBody Item lost) {
 		return lostService.modify(lost);
 	}
 	@DeleteMapping("/{lostId}")
-	public Messenger delete(@RequestBody Lost lost) {
+	public Messenger delete(@RequestBody Item lost) {
 		return lostService.remove(lost);
 	}
 
