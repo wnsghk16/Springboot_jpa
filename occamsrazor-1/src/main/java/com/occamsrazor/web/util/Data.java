@@ -3,7 +3,11 @@ package com.occamsrazor.web.util;
 import java.io.File;
 
 public enum Data {
+<<<<<<< HEAD
 	HOME_PATH, PATH, CSV, USER_LIST,ADMIN_LIST, LOST_LIST;
+=======
+	HOME_PATH, PATH, CSV, USER_LIST,ADMIN_LIST;
+>>>>>>> branch '3_di' of https://github.com/wnsghk16/Springboot_jpa.git
 	
 	@Override
 	public String toString() {
