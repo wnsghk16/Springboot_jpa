@@ -4,7 +4,7 @@ const adminVue = {
 		join : ()=>{
 			return `
 		<table id="kcdc">
-			<tr>
+			<tr >
 	            <td id="content" colspan="4">
 	                <table id="admin" style="width: 1500px; height:565px; margin: 0 auto">
 	                <tr style="width: 80%;height: 50px;">
