@@ -1,4 +1,4 @@
-package com.occamsrazor.web.user;
+package com.occamsrazor.web.lost;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -10,34 +10,36 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.occamsrazor.web.admin.Admin;
+import com.occamsrazor.web.user.User;
 import com.occamsrazor.web.util.Data;
 import com.occamsrazor.web.util.Messenger;
 
 @Repository
-public class UserDaoImpl implements UserDao{
+public class LostDaoImpl implements LostDao{
 
 	@Override
-	public void insert(User user) {		
+	public void insert(Lost lost) {
 		try {
 			@SuppressWarnings("resource")
 			BufferedWriter writer = new BufferedWriter(
 									 new FileWriter(
-										new File(Data.PATH.toString()+Data.USER_LIST+Data.CSV),true));
-			writer.write(user.toString());
+									  new File(Data.PATH.toString()+Data.LOST_LIST+Data.CSV),true));
+			
+			writer.write(lost.toString());
 			writer.newLine();
-			writer.flush(); //카톡에서 엔터는 줄바꿈이고 보내기버튼 누르면 메세지 전송하듯 보내기버튼같은거	
+			writer.flush();
 		}catch(Exception e){
 			System.out.println(Messenger.FILE_INSERT_ERROR);
 		}
-		
 	}
 
 	@Override
-	public List<User> selectAll() {		
-		List<User> userlist = new ArrayList<>();	
+	public List<Lost> selectAll() {
+		List<Lost> lostlist = new ArrayList<>();	
 		List<String> list = new ArrayList<>();
 		try {
-			File file = new File(Data.PATH.toString()+Data.USER_LIST+Data.CSV);
+			File file = new File(Data.PATH.toString()+Data.LOST_LIST+Data.CSV);
 			BufferedReader reader = new BufferedReader(new FileReader(file));	
 			String message = "";
 			while((message = reader.readLine()) != null) {
@@ -45,33 +47,30 @@ public class UserDaoImpl implements UserDao{
 			}
 			reader.close(); //다 읽었으면 닫아주기
 		}catch(Exception e){
-			System.out.println(Messenger.FILE_SELECT_ERROR.toString());
+			System.out.println(Messenger.FILE_SELECT_ERROR);
 		}
-		User u = null;
+		
+		Lost l = null;
 		for(int i=0; i<list.size(); i++) {
-			u = new User();
+			l = new Lost();
 			String[] arr = list.get(i).split(",");
-			u.setUserid(arr[0]);
-			u.setPasswd(arr[1]);
-			u.setName(arr[2]);
-			u.setSsn(arr[3]);
-			u.setAddr(arr[4]);
-			u.setProfile(arr[5]);
-			u.setEmail(arr[6]);
-			u.setPhoneNumber(arr[7]);
-			u.setRegisterDate(arr[8]);
-			userlist.add(u);
+			l.setLostId(arr[0]);
+			l.setName(arr[1]);
+			l.setLostDate(arr[2]);
+			l.setGroup(arr[3]);
+			l.setLocation(arr[4]);
+			lostlist.add(l);
 		}			
-		return userlist;
+		return lostlist;
 	}
 
 	@Override
-	public User selectOne(String userid) {
-		List<User> list = selectAll();
-		User result = null;
-		for(User u : list) {
-			if(userid.equals(u.getUserid())) {
-				result = u;
+	public Lost selectOne(String lostId) {
+		List<Lost> list = selectAll();
+		Lost result = null;
+		for(Lost l : list) {
+			if(lostId.equals(l.getLostId())) {
+				result = l;
 				break;
 			}
 		}
@@ -79,15 +78,15 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	@Override
-	public void update(User user) {
+	public Messenger update(Lost lost) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void delete(User user) {
+	public Messenger delete(Lost lost) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 }

@@ -1,98 +1,106 @@
 "use strict"
 
 var admin = admin || {}
-admin = (()=>{ //e=>로 쓰면 이벤트가 발생할때만 실행되므로 쓰면 안된다.
+admin = (()=>{ // e=>로 쓰면 이벤트가 발생할때만 실행되므로 쓰면 안된다.
+	const WHEN_ERROR = `호출하는 JS 파일을 찾지 못했습니다.`
+	let user_vue
 	let init = ()=>{
+		user_vue = `/resources/vue/user_vue.js`
 		onCreate()
 	}
 	let onCreate = ()=>{
-		setContentView()
-		$.getJSON('/users', d => {
-			$('#total_count').text('총회원수 : '+d.length)
-			$.each(d, (i, user) => {
-				$(`<tr>
-                        	<td>
-                                <span>${i+1}</span>
-                            </td>
-                            <td>
-                                <span>${user.userid}</span>
-                            </td>
-                            <td>
-                                <span id="user_`+(i+1)+`"></span>
-                            </td>
-                             <td>
-                                <span>${user.ssn}</span>
-                            </td>
-                           <td>
-                                <span>${user.email}</span>
-                            </td>
-                            <td>
-                                <span>${user.phoneNumber}</span>
-                            </td>
-                            <td>
-                                <span>${user.registerDate}</span>
-                            </td>
-							 
-                        </tr>`).appendTo('#user_list')   
-                        
-                        $(`<a>${user.name}</a>`)
-                         .css({cursor:'pointer',color:'blue'})
-						 .appendTo("#user_"+(i+1))
-						 .click(e=>{
-							 e.preventDefault()
-				        	 $('#user_list').empty()
-				        	 $(`<tr>
-		            				<td id="num">No.</td>
-		            				<td id="userid">ID</td>
-		            				<td id="name">NAME</td>
-		            				<td id="ssn">SSN</td>
-		            				<td id="email">EMAIL</td>
-		            				<td id="phoneNumber">PHONENUMBER</td>
-		            				<td id="registerDate">REGISTERDATE</td>
-		            			</tr>  `).appendTo('#user_list')
-		            					 .first().css({'background-color':'yellow'})  
-				        	 $(`<tr>
-								        <td>
-								            <span>${i+1}</span>
-								        </td>
-								        <td>
-								            <span>${user.userid}</span>
-								        </td>
-								        <td>
-								            <span>${user.name}</span>
-								        </td>
-								         <td>
-								            <span>${user.ssn}</span>
-								        </td>
+		$.when(
+				$.getScript(user_vue)			
+			).done(()=>{
+				setContentView()
+				$.getJSON('/users', d => {
+					$('#total_count').text('총회원수 : '+d.length)
+					$.each(d, (i, user) => {
+						$(`<tr>
+		                        	<td>
+		                                <span>${i+1}</span>
+		                            </td>
+		                            <td>
+		                                <span>${user.userid}</span>
+		                            </td>
+		                            <td>
+		                                <span id="user_`+(i+1)+`"></span>
+		                            </td>
+		                             <td>
+		                                <span>${user.ssn}</span>
+		                            </td>
+		                           <td>
+		                                <span>${user.email}</span>
+		                            </td>
+		                            <td>
+		                                <span>${user.phoneNumber}</span>
+		                            </td>
+		                            <td>
+		                                <span>${user.registerDate}</span>
+		                            </td>
+									 
+		                        </tr>`).appendTo('#user_list')   
+		                        
+		                        $(`<a>${user.name}</a>`)
+		                         .css({cursor:'pointer',color:'blue'})
+								 .appendTo("#user_"+(i+1))
+								 .click(e=>{
+									 e.preventDefault()
+						        	 $('#user_list').empty()
+						        	 $(userVue.detail()).appendTo('#user_list')
+						        	 $.getJSON(`/users/${user.userid}`,d=>{
+						        		 $('#userid').text(d.userid)
+						        		 $('#name').text(d.name)
+						        		 $('#ssn').text(d.ssn)
+						        		 $('#addr').text(d.addr)
+						        		 $('#email').text(d.email)
+						        		 $('#phoneNumber').text(d.phoneNumber)
+						        		 $('#registerDate').text(d.registerDate)
+						        	 })						        	
+								 })
+								 
+								 
+								 
+					})// each
+				})// getjson
+				$('#lost_list').click(e=>{
+						e.preventDefault()
+						$('#user_list').empty()						
+						$.getJSON('/losts', d => {
+						$(userVue.list()).appendTo('#user_list').css({'background-color':'yellow'})
+						$.each(d, (i, lost) => {								
+								$(`<tr>
+								      <td>
+								        <span>${i+1}</span>
+								       </td>
 								       <td>
-								            <span>${user.email}</span>
+								         <span>${lost.lostId}</span>
+								       </td>
+								       <td>
+								          <span>${lost.name}</span>
 								        </td>
 								        <td>
-								            <span>${user.phoneNumber}</span>
-								        </td>
-								        <td>
-								            <span>${user.registerDate}</span>
-								        </td>
-										 
-								    </tr>`).appendTo('#user_list')  
-							 //alert(`${user.userid}`)
-						 })                      
-			})//each
-		})//getjson
+								            <span>${lost.lostDate}</span>
+								         </td>
+								         <td>
+								            <span>${lost.group}</span>
+								         </td>
+								         <td>
+								            <span>${lost.location}</span>
+								         </td>															 
+								     </tr>`).appendTo('#user_list')   
+							})
+								                        
+						})
+				})
+			}).fail(()=>{
+				alert(WHEN_ERROR)
+			}) // when이 성공하면 done() 실패하면 fail()
+					
 	}
-	let setContentView = ()=>{
-		 $('#kcdc').css({ width: '80%', height: '900px' }).addClass('border_black center')
-	     $('#title').css({width:'25%'}).addClass('center')
-	     $('#title2').css({width:'50%'}).addClass('center')
-	     $('#title3').css({width:'25%'}).addClass('center')
-	     $('#nav_list').css({width:'100%'}).addClass('border_black center')    
-	     $('#content').css({width:'100%', height:'100%'}).addClass('center')
-	     $('#admin td').addClass('border_black')
-	     $('#register_a').css({color: 'blue',cursor:'none','text-decoration':'none'})
-	     
+	let setContentView = ()=>{ 
+	     $('#user_list').addClass('border_black center')	     
 	     $('#user_list tr').first().css({'background-color':'yellow'})
-		 $('#user_list').addClass('border_black').css({'width':'100%'})
-		 $('#user_list tr').addClass('border_black width_full')
 		 
 		
 	}

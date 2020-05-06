@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.occamsrazor.web.user.User;
 import com.occamsrazor.web.util.Data;
 import com.occamsrazor.web.util.Messenger;
 
@@ -22,7 +23,7 @@ public class AdminDaoImpl implements AdminDao{
 			@SuppressWarnings("resource")
 			BufferedWriter writer = new BufferedWriter(
 									 new FileWriter(
-									  new File(Data.ADMIN_PATH.toString()+Data.ADMIN_LIST+Data.CSV),true));
+									  new File(Data.PATH.toString()+Data.ADMIN_LIST+Data.CSV),true));
 			
 			writer.write(admin.toString());
 			writer.newLine();
@@ -38,7 +39,7 @@ public class AdminDaoImpl implements AdminDao{
 		List<Admin> adminlist = new ArrayList<>();	
 		List<String> list = new ArrayList<>();
 		try {
-			File file = new File(Data.ADMIN_PATH.toString()+Data.ADMIN_LIST+Data.CSV);
+			File file = new File(Data.PATH.toString()+Data.ADMIN_LIST+Data.CSV);
 			BufferedReader reader = new BufferedReader(new FileReader(file));	
 			String message = "";
 			while((message = reader.readLine()) != null) {
@@ -46,17 +47,21 @@ public class AdminDaoImpl implements AdminDao{
 			}
 			reader.close(); //다 읽었으면 닫아주기
 		}catch(Exception e){
-			System.out.println(Messenger.FILE_INSERT_ERROR);
+			System.out.println(Messenger.FILE_SELECT_ERROR);
 		}
 		
 		Admin a = null;
 		for(int i=0; i<list.size(); i++) {
 			a = new Admin();
 			String[] arr = list.get(i).split(",");
-			a.setName(arr[0]);
-			a.setPosition(arr[1]);
-			a.setEmail(arr[2]);
-			a.setPhoneNumber(arr[3]);
+			a.setEmployNumber(arr[0]);
+			a.setPasswd(arr[1]);
+			a.setName(arr[2]);
+			a.setPosition(arr[3]);
+			a.setProfile(arr[4]);
+			a.setEmail(arr[5]);
+			a.setPhoneNumber(arr[6]);
+			a.setRegisterDate(arr[7]);
 			adminlist.add(a);
 		}			
 		return adminlist;
@@ -64,8 +69,15 @@ public class AdminDaoImpl implements AdminDao{
 	
 	@Override
 	public Admin selectOne(String employNumber) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Admin> list = selectAll();
+		Admin result = null;
+		for(Admin a : list) {
+			if(employNumber.equals(a.getEmployNumber())) {
+				result = a;
+				break;
+			}
+		}
+		return result;
 	}
 
 	@Override
@@ -82,11 +94,15 @@ public class AdminDaoImpl implements AdminDao{
 
 	@Override
 	public boolean access(Admin admin) {
-		List<Admin> adminlist = selectAll();
-		for(int i=0; i<adminlist.size(); i++) {
+		List<Admin> list = selectAll();
+		boolean result = false;
+		for(int i=0; i<list.size(); i++) {
+			if(admin.getEmployNumber().equals(list.get(i).getEmployNumber())
+					&& admin.getPasswd().equals(list.get(i).getPasswd())) {
+				result = true;
+			}
 		}
-		return true;
+		return result;
 	}
 
 }
-
