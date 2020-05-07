@@ -89,7 +89,7 @@ user = (()=>{
 			$('#access_a').click(e=>{
 				e.preventDefault()
 				$('#content').empty()
-				$('#content').html(adminVue.login())	
+				$('#content').html(adminVue.login())
 				$(`<input type="button"/>`)
 				.attr({value:"로그인"})
 				.appendTo('#login_box')
@@ -124,7 +124,6 @@ user = (()=>{
 			    .click(e=>{
 			    	e.preventDefault()
 			    })
-			     		
 			})
 			$('#join_a').click(e=>{
 				e.preventDefault()
