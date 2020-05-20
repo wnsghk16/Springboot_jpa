@@ -333,3 +333,92 @@ ROUND(AVG(CASE WHEN POSITION like 'GK' THEN HEIGHT END),2) 골키퍼,
 ROUND(AVG(HEIGHT),2) 전체평균키
 from player
 where height != '0';
+
+
+
+
+select * from player;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+select * from kteam;
+
+CREATE TABLE kteam(
+ team_id VARCHAR(10) PRIMARY KEY, 
+ team_name VARCHAR(40), 
+ address VARCHAR(80), 
+ tel VARCHAR(20), 
+ homepage VARCHAR(80)
+)DEFAULT CHARSET = UTF8;
+
+CREATE TABLE center(
+ center_id VARCHAR(10) PRIMARY KEY,
+ business_id VARCHAR(10),
+ place_id VARCHAR(10),
+ application_date VARCHAR(10),
+ team_id VARCHAR(10), 
+ pupose VARCHAR(40), 
+ users_num VARCHAR(10),
+ start_date VARCHAR(10),
+ end_date VARCHAR(10),
+ perform_status VARCHAR(10),
+ price VARCHAR(20),
+ reservation_date VARCHAR(50),
+ write_date VARCHAR(50),
+ update_date VARCHAR(50),
+ offline_status VARCHAR(10),
+ foreign key(team_id) REFERENCES kteam(team_id)
+)DEFAULT CHARSET = UTF8;
+
+
+
+
+
+
+
+
+

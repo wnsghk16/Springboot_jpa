@@ -4,7 +4,7 @@ const adminVue = {
 		join : ()=>{
 			return `
 		<table id="admin_page" style="width: 70%; height: 80%; border: 1px solid black; text-align: center; margin: 0 auto;">
-			<tr >
+			<tr>
 				<td rowspan="4" style="border: 1px solid black;">
 					<img src="https://u5b8t9w6.stackpathcdn.com/wp-content/uploads/2014/12/profile-default-300x242.jpg">
 	            </td>
@@ -15,7 +15,7 @@ const adminVue = {
 	                <input id="name" type="text" />
 	            </td>
 	        </tr>  
-	        <tr>
+	        <tr >
 	            <td style="border: 1px solid black;">
 	               <label>직급</label>
 	            </td>
